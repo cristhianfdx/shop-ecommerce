@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public_html:/public_html
+      - ./conf.d:/etc/nginx/conf.d
+    networks:
+      - lempstack
+
+  php:
+    image: php:7.4-fpm-alpine
+    volumes:
+      - ./public_html:/public_html
+    expose:
+      - 9000
+    networks:
+      - lempstack
+
+  dbec:
+    image: "mysql/mysql-server:5.7.25"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "db-data:/var/lib/mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678*
+    networks:
+      - lempstack
+
+networks:
+  lempstack:
+
+volumes:
+  db-data:
