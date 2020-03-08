@@ -1,38 +1,29 @@
-version: "3"
+version: "3.1"
 
 services:
-  web:
-    image: nginx:alpine
+  drupal:
+    stdin_open: true
+    tty: true
+    image: drupal:8-apache
     ports:
       - "8080:80"
     volumes:
-      - ./public_html:/public_html
-      - ./conf.d:/etc/nginx/conf.d
-    networks:
-      - lempstack
+      - ./public_html:/var/www/html
+    restart: always
+    links: 
+      - mysql
 
-  php:
-    image: php:7.3-fpm-alpine
-    volumes:
-      - ./public_html:/public_html
-    expose:
-      - 9000
-    networks:
-      - lempstack
-
-  dbec:
-    image: "mysql/mysql-server:5.7.25"
+  mysql:
+    image: mysql:5.7.27
     ports:
       - "3306:3306"
     volumes:
-      - "db-data:/var/lib/mysql"
+      - db-data:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=12345678*
-    networks:
-      - lempstack
-
-networks:
-  lempstack:
+      MYSQL_ROOT_PASSWORD: MTIzNDU2Nzgq
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: user
+      MYSQL_PASSWORD: MTIzNDU2Nzgq
 
 volumes:
   db-data:
