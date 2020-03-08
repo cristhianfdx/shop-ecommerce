@@ -19,10 +19,11 @@ services:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
+      - ./config/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       MYSQL_ROOT_PASSWORD: MTIzNDU2Nzgq
-      MYSQL_DATABASE: drupal
-      MYSQL_USER: user
+      MYSQL_DATABASE: ecommerce
+      MYSQL_USER: drupal
       MYSQL_PASSWORD: MTIzNDU2Nzgq
 
 volumes:
