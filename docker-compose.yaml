@@ -12,7 +12,7 @@ services:
       - lempstack
 
   php:
-    image: php:7.4-fpm-alpine
+    image: php:7.3-fpm-alpine
     volumes:
       - ./public_html:/public_html
     expose:
