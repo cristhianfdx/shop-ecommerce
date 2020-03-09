@@ -8,6 +8,7 @@ services:
     volumes:
       - ./public_html:/var/www/html
     restart: always
+    container_name: drupal-app
     links: 
       - mysql
 
@@ -23,6 +24,7 @@ services:
       MYSQL_DATABASE: ecommerce
       MYSQL_USER: drupal
       MYSQL_PASSWORD: MTIzNDU2Nzgq
+    container_name: drupal-db
 
 volumes:
   db-data:
