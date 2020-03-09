@@ -9,7 +9,7 @@ services:
       - ./public_html:/var/www/html
     restart: always
     container_name: drupal-app
-    links: 
+    depends_on:
       - mysql
 
   mysql:
