@@ -2,15 +2,14 @@ version: "3.1"
 
 services:
   drupal:
-    stdin_open: true
-    tty: true
-    image: drupal:8-apache
+    image: drupal:8.8-apache   
     ports:
       - "8080:80"
     volumes:
       - ./public_html:/var/www/html
     restart: always
-    links: 
+    container_name: drupal-app
+    depends_on:
       - mysql
 
   mysql:
@@ -25,6 +24,7 @@ services:
       MYSQL_DATABASE: ecommerce
       MYSQL_USER: drupal
       MYSQL_PASSWORD: MTIzNDU2Nzgq
+    container_name: drupal-db
 
 volumes:
   db-data:
