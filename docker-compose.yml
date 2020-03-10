@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  mariadb:
+    image: 'bitnami/mariadb:10.3'
+    environment:
+      - MARIADB_ROOT_PASSWORD=MTIzNDU2Nzgq
+      - MARIADB_USER=drupal
+      - MARIADB_DATABASE=ecommerce
+      - MARIADB_PASSWORD=MTIzNDU2Nzgq
+      - ALLOW_EMPTY_PASSWORD=no
+    volumes:
+      - 'mariadb_data:/bitnami'
+    ports:
+      - '3306:3306'
+
+  drupal:
+    image: 'bitnami/drupal:latest'
+    environment:
+      - MARIADB_HOST=mariadb
+      - MARIADB_PORT_NUMBER=3306
+      - MARIADB_ROOT_PASSWORD=MTIzNDU2Nzgq
+      - DRUPAL_DATABASE_NAME=ecommerce
+      - DRUPAL_DATABASE_USER=drupal
+      - DRUPAL_DATABASE_PASSWORD=MTIzNDU2Nzgq
+      - ALLOW_EMPTY_PASSWORD=no
+      - DRUPAL_PROFILE=standard
+      - DRUPAL_USERNAME=elarduino
+    ports:
+      - '8080:80'
+      - '443:443'
+    volumes:
+      - 'drupal_data:/bitnami'
+    depends_on:
+      - mariadb
+
+volumes:
+  mariadb_data:
+    driver: local
+  drupal_data:
+    driver: local
