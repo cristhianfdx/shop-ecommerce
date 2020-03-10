@@ -19,7 +19,7 @@
 
   -  `docker-compose up -d`
 
-# Primera ejecución
+### Primera ejecución
 
 - Realizar login
      - username: elarduino
