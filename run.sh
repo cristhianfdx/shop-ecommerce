@@ -1,0 +1,1 @@
+docker exec wordpress sh -c "cat /var/www/html/size-config.txt > /var/www/html/.htaccess"

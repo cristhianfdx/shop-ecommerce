@@ -17,15 +17,9 @@
 
 ## Ejecutar aplicación
 
-  -  `docker-compose up -d`
-
-### Primera ejecución
-
-- Realizar login
-     - username: elarduino
-     - password: bitnami
-
-- Restaurar la configuración utilizando el archivo mas reciente de la carpeta `backups` teniendo en cuenta:
-     - Ingresar a `configuración`
-     - Ingresar a `sincronización de configuración`
-     - Ingresar a `importar`
+  - `docker-compose up -d`
+  - Crear un proyecto básico de wordpress
+  - Instalar el plugin [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migration/)
+  - Ejecutar: En linux `./run.sh` y en windows desde el powershell ejecutar el script `run.ps1`
+  - Importar el Backup que se encuentra en la carpeta `backups`
+  

@@ -1,41 +1,39 @@
-version: '2'
+version: '3.1'
 
 services:
-  mariadb:
-    image: 'bitnami/mariadb:10.3'
-    environment:
-      - MARIADB_ROOT_PASSWORD=MTIzNDU2Nzgq
-      - MARIADB_USER=drupal
-      - MARIADB_DATABASE=ecommerce
-      - MARIADB_PASSWORD=MTIzNDU2Nzgq
-      - ALLOW_EMPTY_PASSWORD=no
-    volumes:
-      - 'mariadb_data:/bitnami'
-    ports:
-      - '3306:3306'
 
-  drupal:
-    image: 'bitnami/drupal:latest'
-    environment:
-      - MARIADB_HOST=mariadb
-      - MARIADB_PORT_NUMBER=3306
-      - MARIADB_ROOT_PASSWORD=MTIzNDU2Nzgq
-      - DRUPAL_DATABASE_NAME=ecommerce
-      - DRUPAL_DATABASE_USER=drupal
-      - DRUPAL_DATABASE_PASSWORD=MTIzNDU2Nzgq
-      - ALLOW_EMPTY_PASSWORD=no
-      - DRUPAL_PROFILE=standard
-      - DRUPAL_USERNAME=elarduino
+  db-wordpress:
+    image: mysql:5.7
+    restart: always
     ports:
-      - '8080:80'
-      - '443:443'
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: ecommerce
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: MTIzNDU2Nzgq
+      MYSQL_ROOT_PASSWORD: MTIzNDU2Nzgq
+    container_name: db-wordpress
     volumes:
-      - 'drupal_data:/bitnami'
+      - db:/var/lib/mysql
+
+  wordpress:
+    build: .
+    ports:
+      - 8080:80 
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: MTIzNDU2Nzgq
+      WORDPRESS_DB_NAME: ecommerce     
     depends_on:
-      - mariadb
+      - db-wordpress
+    container_name: wordpress
+    volumes: 
+      - wordpress:/var/www/html  
 
 volumes:
-  mariadb_data:
-    driver: local
-  drupal_data:
-    driver: local
+  wordpress:
+  db:
+
+
+
