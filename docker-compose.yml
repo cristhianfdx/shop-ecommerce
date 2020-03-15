@@ -17,24 +17,26 @@ services:
       - db:/var/lib/mysql
 
   wordpress:
-    image: wordpress:5.3.2-apache
+    build: .
     ports:
       - 8080:80 
     environment:
       WORDPRESS_DB_HOST: db-wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: MTIzNDU2Nzgq
-      WORDPRESS_DB_NAME: ecommerce     
+      WORDPRESS_DB_NAME: ecommerce
+      WORDPRESS_TABLE_PREFIX: "wp_"
+      WORDPRESS_DEBUG: 1    
     depends_on:
       - db-wordpress
     container_name: wordpress
     volumes: 
       - wordpress:/var/www/html
-      - ./size-config.txt:/var/www/html  
+      - .config/.media-size-configuration:/var/www/html/.media-size-configuration    
 
 volumes:
-  wordpress:
   db:
+  wordpress:
 
 
 

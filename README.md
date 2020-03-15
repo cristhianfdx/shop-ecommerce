@@ -17,9 +17,13 @@
 
 ## Ejecutar aplicación
 
-  - `docker-compose up -d`
-  - Crear un proyecto básico de wordpress
-  - Instalar el plugin [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migration/)
-  - Ejecutar: En linux `./run.sh` y en windows desde el powershell ejecutar el script `run.ps1`
-  - Importar el Backup que se encuentra en la carpeta `backups`
+  - `docker-compose up -d --build`
+
+  - Ejecutar:
+     - Linux: `sudo chmod +x install.sh` y después `./install.sh` 
+     - Windows: Desde el Powershell `install.ps1`
+
+  - Usando el plugin All-in-One WP Migration importar el archivo `backups/first.wpress` 
+
+  - Iniciar sesión nuevamente en WordPress
   
