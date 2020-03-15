@@ -2,21 +2,6 @@ version: '3.1'
 
 services:
 
-  wordpress:
-    image: wordpress:5.3.2-php7.2-apache
-    restart: always
-    ports:
-      - 8080:80
-    environment:
-      WORDPRESS_DB_HOST: db-wordpress
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: MTIzNDU2Nzgq
-      WORDPRESS_DB_NAME: ecommerce
-    depends_on:
-      - db-wordpress
-    volumes:
-      - wordpress:/var/www/html
-
   db-wordpress:
     image: mysql:5.7
     restart: always
@@ -27,8 +12,24 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: MTIzNDU2Nzgq
       MYSQL_ROOT_PASSWORD: MTIzNDU2Nzgq
+    container_name: db-wordpress
     volumes:
       - db:/var/lib/mysql
+
+  wordpress:
+    build: .
+    ports:
+      - 8080:80 
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: MTIzNDU2Nzgq
+      WORDPRESS_DB_NAME: ecommerce     
+    depends_on:
+      - db-wordpress
+    container_name: wordpress
+    volumes: 
+      - wordpress:/var/www/html  
 
 volumes:
   wordpress:
