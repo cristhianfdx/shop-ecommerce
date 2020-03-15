@@ -18,14 +18,3 @@
 ## Ejecutar aplicación
 
   -  `docker-compose up -d`
-
-### Primera ejecución
-
-- Realizar login
-     - username: elarduino
-     - password: bitnami
-
-- Restaurar la configuración utilizando el archivo mas reciente de la carpeta `backups` teniendo en cuenta:
-     - Ingresar a `configuración`
-     - Ingresar a `sincronización de configuración`
-     - Ingresar a `importar`
