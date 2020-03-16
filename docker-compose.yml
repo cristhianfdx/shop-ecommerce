@@ -7,6 +7,8 @@ services:
     restart: always
     ports:
       - 3306:3306
+    networks:
+      - default
     environment:
       MYSQL_DATABASE: ecommerce
       MYSQL_USER: wordpress
@@ -17,7 +19,7 @@ services:
       - db:/var/lib/mysql
 
   wordpress:
-    build: .
+    image: wordpress:5.3.2-apache
     ports:
       - 8080:80
     environment:
@@ -34,9 +36,22 @@ services:
       - wordpress:/var/www/html
       - .config/.media-size-configuration:/var/www/html/.media-size-configuration
 
+  wordpress-cli:
+    depends_on:
+      - db-wordpress
+      - wordpress
+    image: wordpress:cli
+    user: xfs
+    command: >
+      /bin/sh -c '
+      sleep 10;
+      wp core install --path="/var/www/html" --url="http://localhost:8080" --title="Tienda de Hardware El arduino" --admin_user=elarduino --admin_password=Elarduino46*_* --admin_email=elarduino46@gmail.com
+      && wp plugin install all-in-one-wp-migration --activate
+      '
+    container_name: wordpress-cli
+    volumes:
+      - wordpress:/var/www/html
+
 volumes:
   db:
   wordpress:
-
-
-
