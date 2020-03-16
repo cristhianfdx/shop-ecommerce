@@ -25,5 +25,5 @@
 
   - Usando el plugin **All-in-One WP Migration** importar el archivo `backups/first.wpress` 
 
-- Iniciar sesión nuevamente en WordPress
+  - Iniciar sesión nuevamente en WordPress
 
