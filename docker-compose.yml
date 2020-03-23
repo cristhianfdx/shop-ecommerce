@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.1'
 
 services:
 
@@ -42,7 +42,7 @@ services:
     user: xfs
     command: >
       /bin/sh -c '
-      sleep 10;
+      sleep 20;
       wp core install --path="/var/www/html" --url="http://localhost:8080" --title="Tienda de Hardware El arduino" --admin_user=elarduino --admin_password=Elarduino46*_* --admin_email=elarduino46@gmail.com
       && wp plugin install all-in-one-wp-migration --activate
       '
