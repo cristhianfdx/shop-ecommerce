@@ -32,7 +32,7 @@ services:
     container_name: wordpress
     volumes:
       - wordpress:/var/www/html
-      - .config/.media-size-configuration:/var/www/html/.media-size-configuration
+      - .config/php.ini:/var/www/html/php.ini
 
   wordpress-cli:
     depends_on:
