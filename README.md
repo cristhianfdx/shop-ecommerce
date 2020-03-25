@@ -19,11 +19,9 @@
 
   - `docker-compose up -d --build`
 
-  - Ejecutar:
-     - Linux: `sudo chmod +x install.sh` y después `./install.sh`
-     - Windows: Desde el Powershell `install.ps1` (Para activar ejecuciòn de scripts ejecutar como administrador `Set-ExecutionPolicy Unrestricted`)
-
-  - Usando el plugin **All-in-One WP Migration** importar el archivo `backups/first.wpress` 
+  - Usando el plugin **All-in-One WP Migration** importar el archivo correspondiente (Disponible en [https://drive.google.com/drive/folders/1nieTqdL4WN_s4PkX8DdxzzqwBEpzrFku?usp=sharing](https://drive.google.com/drive/folders/1nieTqdL4WN_s4PkX8DdxzzqwBEpzrFku?usp=sharingn))
 
   - Iniciar sesión nuevamente en WordPress
+
+
 

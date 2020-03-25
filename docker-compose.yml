@@ -32,7 +32,7 @@ services:
     container_name: wordpress
     volumes:
       - wordpress:/var/www/html
-      - .config/.media-size-configuration:/var/www/html/.media-size-configuration
+      - .config/php.ini:/var/www/html/php.ini
 
   wordpress-cli:
     depends_on:
@@ -43,8 +43,14 @@ services:
     command: >
       /bin/sh -c '
       sleep 20;
-      wp core install --path="/var/www/html" --url="http://localhost:8080" --title="Tienda de Hardware El arduino" --admin_user=elarduino --admin_password=Elarduino46*_* --admin_email=elarduino46@gmail.com
-      && wp plugin install all-in-one-wp-migration --activate
+      wp core install
+      --path="/var/www/html"
+      --url="http://localhost:8080"
+      --title="Tienda de Hardware El arduino"
+      --admin_user=elarduino --admin_password=Elarduino46*_*
+      --admin_email=elarduino46@gmail.com &&
+      wp language core install es_CO --activate &&
+      wp plugin install all-in-one-wp-migration --activate
       '
     container_name: wordpress-cli
     volumes:
