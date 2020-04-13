@@ -18,10 +18,6 @@
 ## Ejecutar aplicación
 
   - `docker-compose up -d --build`
-
-  - Usando el plugin **All-in-One WP Migration** importar el archivo correspondiente (Disponible en [https://drive.google.com/drive/folders/1nieTqdL4WN_s4PkX8DdxzzqwBEpzrFku?usp=sharing](https://drive.google.com/drive/folders/1nieTqdL4WN_s4PkX8DdxzzqwBEpzrFku?usp=sharingn))
-
-  - Iniciar sesión nuevamente en WordPress
-
-
-
+  - Descargar backup de [https://drive.google.com/drive/folders/1nieTqdL4WN_s4PkX8DdxzzqwBEpzrFku](https://drive.google.com/drive/folders/1nieTqdL4WN_s4PkX8DdxzzqwBEpzrFku)
+  - Descomprimir archivo `.zip` descargado
+  - Importar archivo usando el plugin *All in One Wp Migration*

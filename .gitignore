@@ -1,2 +1,4 @@
 backups
 backups/*
+venv
+.vscode

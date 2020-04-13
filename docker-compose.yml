@@ -17,7 +17,7 @@ services:
       - db:/var/lib/mysql
 
   wordpress:
-    image: wordpress:5.3.2-apache
+    image: wordpress:latest
     ports:
       - 8080:80
     environment:
@@ -26,7 +26,6 @@ services:
       WORDPRESS_DB_PASSWORD: MTIzNDU2Nzgq
       WORDPRESS_DB_NAME: ecommerce
       WORDPRESS_TABLE_PREFIX: "wp_"
-      WORDPRESS_DEBUG: 1
     depends_on:
       - db-wordpress
     container_name: wordpress
@@ -49,7 +48,7 @@ services:
       --title="Tienda de Hardware El arduino"
       --admin_user=elarduino --admin_password=Elarduino46*_*
       --admin_email=elarduino46@gmail.com &&
-      wp language core install es_CO --activate &&
+      wp language core install es_ES --activate &&
       wp plugin install all-in-one-wp-migration --activate
       '
     container_name: wordpress-cli
