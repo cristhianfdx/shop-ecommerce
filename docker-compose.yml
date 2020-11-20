@@ -44,10 +44,10 @@ services:
       sleep 20;
       wp core install
       --path="/var/www/html"
-      --url="http://localhost:8080"
-      --title="Tienda de Hardware El arduino"
-      --admin_user=elarduino --admin_password=Elarduino46*_*
-      --admin_email=elarduino46@gmail.com &&
+      --url="http://134.209.217.128"
+      --title="Amani Aventure"
+      --admin_user=Amani123 --admin_password=2Cpcw$8e1tP&62hYR!
+      --admin_email=valent.2696@gmail.com &&
       wp language core install es_ES --activate &&
       wp plugin install all-in-one-wp-migration --activate
       '
